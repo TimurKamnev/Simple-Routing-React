@@ -1,24 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useEffect} from 'react';
+import {Routes, Route, useLocation} from "react-router-dom";
+import Home from "./Components/Home";
+import Contact from "./Components/Contact";
+import About from "./Components/About";
+import './Styles/styles.scss'
+import LogIn from "./Components/LogIn";
+import Layout from "./Layout/Layout";
+import NotFound from "./Components/NotFound";
+
 
 function App() {
+
+  // const {pathname} = useLocation();
+  // тот же способ что и с route родителём.
+  // useEffect(() => {
+  //   alert(`Вы находитесь на странице ${pathname}`)
+  // },[pathname])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/*{*/}
+      {/*  pathname === '/login' ? '' : <Header/>*/}
+      {/*}*/}
+        <Routes>
+          <Route path='/' element={<Layout/>}>
+            <Route path='' element={<Home/>}/>
+            <Route path='contact' element={<Contact/>}/>
+            <Route path='about' element={<About/>}/>
+          </Route>
+          <Route path='*' element={<NotFound/>}/>
+          <Route path='/login' element={<LogIn/>}/>
+        </Routes>
     </div>
   );
 }

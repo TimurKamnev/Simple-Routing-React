@@ -1,0 +1,13 @@
+.header {
+  padding: 40px 0;
+  &__list {
+    display: flex;
+    column-gap: 40px;
+  }
+  &__link {
+  color: #000;
+    &.active {
+      color: orangered;
+    }
+  }
+}
